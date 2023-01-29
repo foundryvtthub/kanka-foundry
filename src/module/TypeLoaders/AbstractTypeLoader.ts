@@ -3,14 +3,12 @@ import { KankaApiChildEntity, KankaApiEntity, KankaApiEntityType, KankaApiId } f
 import ReferenceCollection from '../ReferenceCollection';
 
 export default abstract class AbstractTypeLoader<T extends KankaApiChildEntity = KankaApiChildEntity> {
-    constructor(protected api: KankaApi) {}
-
     public async createReferenceCollection(
         campaignId: KankaApiId,
         entity: T,
         lookup: KankaApiEntity[] = [],
     ): Promise<ReferenceCollection> {
-        const collection = new ReferenceCollection(campaignId, lookup, this.api);
+        const collection = new ReferenceCollection(campaignId, lookup);
 
         await Promise.all([
             ...entity.relations.map(relation => collection.addByEntityId(relation.target_id)),
