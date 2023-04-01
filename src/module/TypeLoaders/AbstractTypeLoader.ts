@@ -1,4 +1,3 @@
-import type KankaApi from '../../api/KankaApi';
 import { KankaApiChildEntity, KankaApiEntity, KankaApiEntityType, KankaApiId } from '../../types/kanka';
 import ReferenceCollection from '../ReferenceCollection';
 

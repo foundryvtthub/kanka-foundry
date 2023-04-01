@@ -4,7 +4,7 @@ function compile(template: string, context = {}): string {
     return Handlebars.compile(template)(context);
 }
 
-describe('kankaEq()', () => {
+describe('eqRegex()', () => {
     beforeAll(() => {
         Handlebars.registerHelper('eqRegex', eqRegex);
     });
@@ -20,7 +20,7 @@ describe('kankaEq()', () => {
     });
 
     it('returns false if value does not match regex', () => {
-        const template = '{{#unless (kankaEq "foobar" "^baz")}}success{{/unless}}';
+        const template = '{{#unless (eqRegex "foobar" "^baz")}}success{{/unless}}';
 
         expect(compile(template)).toEqual('success');
     });
